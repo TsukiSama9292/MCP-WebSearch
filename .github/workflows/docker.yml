@@ -28,7 +28,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -f dockerfile -t tsukisama9292/mcp_websearch:latest -t tsukisama9292/mcp_websearch:${{ steps.version.outputs.tag }} .
+          docker build -f dockerfile -t tsukisama9292/mcp_websearch:latest -t tsukisama9292/mcp_websearch:${{ steps.version.outputs.tag }} --no-cache .
 
       - name: Push Docker image
         run: |
