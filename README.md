@@ -25,8 +25,8 @@
 
 ### 1. 克隆專案
 ```bash
-git clone https://github.com/TsukiSama9292/mcp_searxng.git
-cd mcp_websearch
+git clone https://github.com/TsukiSama9292/MCP-WebSearch.git
+cd MCP-WebSearch
 ```
 
 ### 2. 啟動服務
