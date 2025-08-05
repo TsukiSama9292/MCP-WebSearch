@@ -1,7 +1,5 @@
 from langchain_community.utilities import SearxSearchWrapper
-from langchain_core.tools import tool
-from ..config.settings import setting
-# 依照搜尋速度進行排序
+
 web_engine = ["bing", "google", "duckduckgo", "yahoo", "brave"]
 news_engine = ["bing news", "duckduckgo news", "google news", "yahoo news", "brave news"]
 science_engine = ["google scholar", "arxiv"]
@@ -22,15 +20,14 @@ def get_search_engine(engine_type: str):
     else:
         raise ValueError(f"Unknown engine type: {engine_type}")
 
-def get_search(engine_type: str, query: str, num_results: int = 3, searx_host: str = setting.searxng_url):
+def searxng_search(engine_type: str, query: str, num_results: int = 3, host: str = "http://localhost", port: str = "8080"):
     engine = get_search_engine(engine_type)
     search = SearxSearchWrapper(
-        searx_host=searx_host,
+        searx_host=f"{host}:{port}",
         engines=engine,
     )
     results = search.results(
         query,
         num_results=num_results,
     )
-    # 過濾掉 snippet 為空的項目
     return [r for r in results if r.get("snippet", "").strip()]

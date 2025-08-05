@@ -1,0 +1,15 @@
+services:
+  mcp:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: mcp_websearch
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - SEARXNG_HOST=${SEARXNG_HOST:-http://localhost}
+      - SEARXNG_PORT=${SEARXNG_PORT:-8080}
+      - FIRECRAWL_HOST=${FIRECRAWL_HOST:-http://localhost}
+      - FIRECRAWL_PORT=${FIRECRAWL_PORT:-3002}
+      - FIRECRAWL_API_KEY=${FIRECRAWL_API_KEY:-firecrawl_api_key}

@@ -1271,12 +1271,11 @@ wheels = [
 ]
 
 [[package]]
-name = "mcp-searxng"
-version = "0.0.2"
+name = "mcp-websearch"
+version = "1.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "fastmcp" },
-    { name = "httpx" },
     { name = "langchain-community" },
     { name = "pydantic" },
     { name = "python-dotenv" },
@@ -1301,7 +1300,6 @@ test = [
 [package.metadata]
 requires-dist = [
     { name = "fastmcp" },
-    { name = "httpx" },
     { name = "langchain-community" },
     { name = "pydantic" },
     { name = "python-dotenv" },

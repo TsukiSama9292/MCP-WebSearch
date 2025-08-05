@@ -3,13 +3,12 @@ requires = ["hatchling>=1.26"]
 build-backend = "hatchling.build"
 
 [project]
-name = "mcp_searxng"
-version = "0.0.2"
+name = "mcp_websearch"
+version = "1.0.0"
 requires-python = ">=3.10, <3.14"
-description = "mcp for web search, base on searxng-docker"
+description = "mcp for web search"
 readme = "README.md"
-license = "AGPL-3.0"
-license-files = ["LICENSE"]
+license = "Apache-2.0"
 
 authors = [
   { name = "Xuan‑You Lin", email = "a0985821880@gmail.com" }
@@ -23,7 +22,6 @@ dependencies = [
   "python-dotenv",
   "fastmcp",
   "langchain_community",
-  "httpx",
 ]
 
 [dependency-groups]
