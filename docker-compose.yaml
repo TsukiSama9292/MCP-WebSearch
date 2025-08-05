@@ -32,6 +32,17 @@ services:
       options:
         max-size: "1m"
         max-file: "1"
+  mcp:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: mcp_searxng
+    restart: unless-stopped
+    networks:
+      - searxng
+    ports:
+      - "8000:8000"
+    command: ["uv", "run", "python", "main.py"]
 
 networks:
   searxng:
