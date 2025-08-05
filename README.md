@@ -82,7 +82,7 @@ uv run pytest -v
 ## 📁 專案結構
 
 ```
-mcp_websearch/
+MCP-WebSearch/
 ├── 📁 src/
 │   └── 📁 mcp_websearch/
 │       ├── 📁 searxng/          # SearXNG 搜尋模組
