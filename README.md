@@ -29,20 +29,9 @@ git clone https://github.com/TsukiSama9292/mcp_searxng.git
 cd mcp_websearch
 ```
 
-### 2. 配置環境變數
-創建 `.env` 文件：
-```bash
-cp .env.example .env
-```
-
-### 3. 啟動服務
+### 2. 啟動服務
 ```bash
 docker compose up -d
-```
-
-### 4. 驗證服務
-```bash
-curl http://localhost:8000/health
 ```
 
 ## ⚙️ 環境配置
@@ -80,73 +69,14 @@ FIRECRAWL_API_KEY=your_firecrawl_api_key
 uv sync
 ```
 
-### 運行開發服務器
+### 啟動服務
 ```bash
-python main.py
+uv run python main.py
 ```
 
-### 運行測試
+### 執行測試
 ```bash
-pytest tests/
-```
-
-## 📖 API 使用
-
-### 可用工具
-
-#### 🌐 search_web
-```python
-# 網頁搜尋
-search_web(query="Python 教學", num_results=5)
-```
-
-#### 📰 search_news  
-```python
-# 新聞搜尋
-search_news(query="AI 最新發展", num_results=3)
-```
-
-#### 🔬 search_science
-```python
-# 學術搜尋
-search_science(query="機器學習研究")
-```
-
-#### 📱 search_social
-```python
-# 社交媒體搜尋
-search_social(query="開源專案討論")
-```
-
-#### 🔥 firecrawl_web
-```python
-# FireCrawl 搜尋
-firecrawl_web(query="技術文檔", limit=5)
-```
-
-#### 📄 firecrawl_get_web_content
-```python
-# 獲取網頁內容
-firecrawl_get_web_content(url="https://example.com")
-```
-
-## 🐳 Docker 部署
-
-### 基本部署
-```bash
-docker compose up -d
-```
-
-### 自定義配置
-```bash
-# 修改 docker-compose.yml 中的環境變數
-# 或使用 .env 文件
-docker compose --env-file .env.production up -d
-```
-
-### 查看日誌
-```bash
-docker compose logs -f mcp_websearch
+uv run pytest -v
 ```
 
 ## 📁 專案結構
