@@ -26,6 +26,7 @@
 ### 1. 克隆專案
 ```bash
 git clone https://github.com/TsukiSama9292/MCP-WebSearch.git
+cp .env.local .env
 cd MCP-WebSearch
 ```
 
