@@ -1,0 +1,42 @@
+name: tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.py"
+      - "pyproject.toml"
+      - ".github/workflows/tests.yml"
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Write .env file
+        shell: bash
+        run: |
+          echo "SEARXNG_HOST=${{ vars.SEARXNG_HOST }}"              > .env
+          echo "SEARXNG_PORT=${{ vars.SEARXNG_PORT }}"              >> .env
+          echo "FIRECRAWL_CLOUD=${{ vars.FIRECRAWL_CLOUD }}"        >> .env
+          echo "FIRECRAWL_HOST=${{ vars.FIRECRAWL_HOST }}"          >> .env
+          echo "FIRECRAWL_PORT=${{ vars.FIRECRAWL_PORT }}"          >> .env
+          echo "FIRECRAWL_API_KEY=${{ vars.FIRECRAWL_API_KEY }}"    >> .env
+      
+      - name: Build Docker Compose
+        run: docker compose build --no-cache
+
+      - name: Run Docker Compose
+        run: docker compose up -d
+        
+      - name: Run tests
+        run: docker compose exec mcp_websearch uv run pytest -v -s
+        
+      - name: Stop Docker Compose
+        if: always()
+        run: docker compose down

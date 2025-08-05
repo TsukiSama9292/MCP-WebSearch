@@ -26,7 +26,7 @@ def firecrawl_get_url_content(url: str, cloud: bool = False, host: str = "http:/
     response.raise_for_status()
     return response.json()["data"].get("markdown","")
 
-def firecrawl_search(query: str, limit: int = 3, host: str = "http://localhost", port: str = "3002", api_key: str = "firecrawl_api_key") -> list:
+def firecrawl_search(query: str, limit: int = 3, cloud: bool = False, host: str = "http://localhost", port: str = "3002", api_key: str = "firecrawl_api_key") -> list:
     """
     Perform a web search using the Firecrawl search engine.
 
@@ -37,7 +37,10 @@ def firecrawl_search(query: str, limit: int = 3, host: str = "http://localhost",
     Returns:
         list: A list of search results, each containing a title and content.
     """
-    url = f"{host}:{port}/v1/search"
+    if cloud:
+        url = "https://api.firecrawl.dev/v1/search"
+    else:
+        url = f"{host}:{port}/v1/search"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}",
@@ -54,7 +57,7 @@ def firecrawl_search(query: str, limit: int = 3, host: str = "http://localhost",
         if results["success"] is True:
             for data in results["data"]:
                 title = data.get("title", "No title")
-                content = firecrawl_get_url_content(data["url"])
+                content = firecrawl_get_url_content(data["url"], cloud=cloud, host=host, port=port, api_key=api_key)
                 if content:
                     result.append({
                         "title": title,

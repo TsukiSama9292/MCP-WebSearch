@@ -1,15 +1,18 @@
 services:
-  mcp:
+  mcp_websearch:
     build:
       context: .
       dockerfile: dockerfile
     container_name: mcp_websearch
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "8000:8000"  # 端口映射
+    # network_mode: host  # 使用主機網路
     environment:
-      - SEARXNG_HOST=${SEARXNG_HOST:-http://localhost}
+      - SEARXNG_HOST=${SEARXNG_HOST:-http://localhost} # 在使用端口映射的情況下，要用 SearXNG 就必須要改
       - SEARXNG_PORT=${SEARXNG_PORT:-8080}
-      - FIRECRAWL_HOST=${FIRECRAWL_HOST:-http://localhost}
+      - FIRECRAWL_HOST=${FIRECRAWL_HOST:-http://localhost} # 在使用端口映射的情況下，要用 Firecrawl 就必須要改
       - FIRECRAWL_PORT=${FIRECRAWL_PORT:-3002}
       - FIRECRAWL_API_KEY=${FIRECRAWL_API_KEY:-firecrawl_api_key}
+    volumes:
+      - ./tests:/app/tests
