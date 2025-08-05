@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: dockerfile
+    image: mcp_websearch:latest
     container_name: mcp_websearch
     restart: unless-stopped
     ports:
