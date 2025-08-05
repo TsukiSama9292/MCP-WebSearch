@@ -91,8 +91,8 @@ MCP-WebSearch/
 ├── 📁 tests/                    # 測試文件
 ├── 📄 main.py                   # 主程式入口
 ├── 📄 docker-compose.yml        # Docker 配置
-├── 📄 pyproject.toml           # Python 專案配置
-└── 📄 README.md                # 專案說明
+├── 📄 pyproject.toml            # Python 專案配置
+└── 📄 README.md                 # 專案說明
 ```
 
 
