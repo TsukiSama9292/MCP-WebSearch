@@ -17,4 +17,4 @@ ENV FIRECRAWL_HOST=localhost
 ENV FIRECRAWL_PORT=3002
 ENV FIRECRAWL_API_KEY=firecrawl_api_key
 
-CMD ["uv", "run", "python", "main.py"]
+CMD ["uv", "run", "python", "main.py", "--searxng-host", "${SEARXNG_HOST}", "--searxng-port", "${SEARXNG_PORT}", "--firecrawl-host", "${FIRECRAWL_HOST}", "--firecrawl-port", "${FIRECRAWL_PORT}", "--firecrawl-api-key", "${FIRECRAWL_API_KEY}"]

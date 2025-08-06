@@ -1,6 +1,11 @@
 # CLI 參數解析器
 import argparse
 import os
+from dotenv import load_dotenv
+
+# 載入 .env 文件
+load_dotenv()
+
 def parse_args():
     parser = argparse.ArgumentParser(description="MCP WebSearch Settings")
     parser.add_argument("--searxng-host", type=str, default=os.getenv("SEARXNG_HOST", "http://localhost"), help="SearxNG host URL")
@@ -11,7 +16,7 @@ def parse_args():
     parser.add_argument("--firecrawl-api-key", type=str, default=os.getenv("FIRECRAWL_API_KEY", "firecrawl_api_key"), help="Firecrawl API key")
     return parser.parse_args()
 settings = parse_args()
-
+print(settings)
 # from mcp.server.fastmcp import FastMCP
 # from mcp_websearch.searxng.searxng_search import searxng_search
 # from mcp_websearch.firecrawl.firecrawl_search import firecrawl_search, firecrawl_get_url_content

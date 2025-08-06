@@ -1276,6 +1276,7 @@ version = "1.0.1"
 source = { editable = "." }
 dependencies = [
     { name = "fastmcp" },
+    { name = "httpx" },
     { name = "langchain-community" },
     { name = "pydantic" },
     { name = "python-dotenv" },
@@ -1300,6 +1301,7 @@ test = [
 [package.metadata]
 requires-dist = [
     { name = "fastmcp" },
+    { name = "httpx" },
     { name = "langchain-community" },
     { name = "pydantic" },
     { name = "python-dotenv" },
